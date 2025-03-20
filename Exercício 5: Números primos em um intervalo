@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class NumerosPrimos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita os números ao usuário
+        int inicio, fim;
+        do {
+            System.out.print("Digite o número inicial do intervalo (positivo): ");
+            inicio = scanner.nextInt();
+            System.out.print("Digite o número final do intervalo (positivo): ");
+            fim = scanner.nextInt();
+            
+            if (inicio <= 0 || fim <= 0 || inicio > fim) {
+                System.out.println("Por favor, insira valores positivos e certifique-se de que o início seja menor ou igual ao fim.");
+            }
+        } while (inicio <= 0 || fim <= 0 || inicio > fim);
+        
+        System.out.println("Números primos no intervalo de " + inicio + " a " + fim + ":");
+        
+        // Loop externo para percorrer os números dentro do intervalo
+        for (int num = inicio; num <= fim; num++) {
+            if (ehPrimo(num)) {
+                System.out.print(num + " ");
+            }
+        }
+        
+        scanner.close();
+    }
+    
+    // Método para verificar se um número é primo
+    public static boolean ehPrimo(int numero) {
+        if (numero < 2) return false;
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
