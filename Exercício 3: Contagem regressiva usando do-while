@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class ContagemRegressiva {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita um número inteiro positivo ao usuário
+        int numero;
+        do {
+            System.out.print("Digite um número inteiro positivo para a contagem regressiva: ");
+            numero = scanner.nextInt();
+            if (numero < 0) {
+                System.out.println("Por favor, digite um número positivo.");
+            }
+        } while (numero < 0);
+        
+        // Loop do-while para contagem regressiva até 0
+        do {
+            System.out.println(numero);
+            numero--;
+        } while (numero >= 0);
+        
+        scanner.close();
+    }
+}
