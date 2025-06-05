@@ -1,0 +1,155 @@
+Exercício 1: Verificação de Número Par ou Ímpar
+import java.util.Scanner;
+
+public class ParOuImpar {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita um número inteiro ao usuário
+        System.out.print("Digite um número inteiro: ");
+        int numero = scanner.nextInt();
+        
+        // Verifica se o número é par ou ímpar
+        if (numero % 2 == 0) {
+            System.out.println("O número é par.");
+        } else {
+            System.out.println("O número é ímpar.");
+        }
+        
+        scanner.close();
+    }
+}
+
+Exercício 2: Classificação de Idade
+
+import java.util.Scanner;
+
+public class ClassificacaoIdade {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita a idade ao usuário
+        System.out.print("Digite a idade: ");
+        int idade = scanner.nextInt();
+        
+        // Classifica a idade
+        if (idade < 18) {
+            System.out.println("Menor de idade.");
+        } else if (idade <= 60) {
+            System.out.println("Adulto.");
+        } else {
+            System.out.println("Idoso.");
+        }
+        
+        scanner.close();
+    }
+}
+
+Exercício 3: Calculadora Simples com switch-case
+
+import java.util.Scanner;
+
+public class CalculadoraSimples {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita dois números ao usuário
+        System.out.print("Digite o primeiro número: ");
+        double num1 = scanner.nextDouble();
+        
+        System.out.print("Digite o segundo número: ");
+        double num2 = scanner.nextDouble();
+        
+        // Solicita a operação desejada
+        System.out.print("Escolha a operação (+, -, *, /): ");
+        char operacao = scanner.next().charAt(0);
+        
+        // Executa a operação com switch-case
+        switch (operacao) {
+            case '+':
+                System.out.println("Resultado: " + (num1 + num2));
+                break;
+            case '-':
+                System.out.println("Resultado: " + (num1 - num2));
+                break;
+            case '*':
+                System.out.println("Resultado: " + (num1 * num2));
+                break;
+            case '/':
+                if (num2 != 0) {
+                    System.out.println("Resultado: " + (num1 / num2));
+                } else {
+                    System.out.println("Erro: divisão por zero não é permitida.");
+                }
+                break;
+            default:
+                System.out.println("Operação inválida.");
+        }
+        
+        scanner.close();
+    }
+}
+
+Exercício 4: Verificação de Ano Bissexto
+
+import java.util.Scanner;
+
+public class AnoBissexto {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita o ano ao usuário
+        System.out.print("Digite um ano: ");
+        int ano = scanner.nextInt();
+        
+        // Verifica se o ano é bissexto
+        if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
+            System.out.println(ano + " é um ano bissexto.");
+        } else {
+            System.out.println(ano + " não é um ano bissexto.");
+        }
+        
+        scanner.close();
+    }
+}
+
+Exercício 5: Conversão de Notas para Conceito
+
+import java.util.Scanner;
+
+public class ConceitoNota {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita a nota ao usuário
+        System.out.print("Digite uma nota de 0 a 10: ");
+        int nota = scanner.nextInt();
+        
+        // Verifica se a nota está dentro do intervalo válido
+        if (nota < 0 || nota > 10) {
+            System.out.println("Nota inválida.");
+        } else {
+            // Determina o conceito com switch-case
+            String conceito;
+            switch (nota) {
+                case 9: case 10:
+                    conceito = "A";
+                    break;
+                case 7: case 8:
+                    conceito = "B";
+                    break;
+                case 5: case 6:
+                    conceito = "C";
+                    break;
+                case 3: case 4:
+                    conceito = "D";
+                    break;
+                default:
+                    conceito = "E";
+            }
+            System.out.println("Conceito: " + conceito);
+        }
+        
+        scanner.close();
+    }
+}
