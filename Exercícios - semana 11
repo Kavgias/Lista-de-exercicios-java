@@ -1,0 +1,192 @@
+Exercicio 1 
+
+
+class Funcionario {
+    protected String nome;
+    protected double salarioBase;
+
+    public Funcionario(String nome, double salarioBase) {
+        this.nome = nome;
+        this.salarioBase = salarioBase;
+    }
+
+    public double calcularSalario() {
+        return salarioBase;
+    }
+
+    public void exibirSalario() {
+        System.out.println(nome + " - Salário: R$ " + calcularSalario());
+    }
+}
+
+class Gerente extends Funcionario {
+
+    public Gerente(String nome, double salarioBase) {
+        super(nome, salarioBase);
+    }
+
+    @Override
+    public double calcularSalario() {
+        return salarioBase * 1.20; // 20% de bônus
+    }
+}
+
+class Estagiario extends Funcionario {
+
+    public Estagiario(String nome, double salarioBase) {
+        super(nome, salarioBase);
+    }
+
+    @Override
+    public double calcularSalario() {
+        return salarioBase * 1.05; // 5% de bônus
+    }
+}
+
+public class Empresa {
+    public static void main(String[] args) {
+        Funcionario f1 = new Funcionario("João", 3000);
+        Funcionario gerente = new Gerente("Maria", 5000)
+  Funcionario estagiario = new Estagiario("Pedro", 1500);
+
+        f1.exibirSalario();
+        gerente.exibirSalario();
+        estagiario.exibirSalario();
+    }
+}
+
+Exercicio 2
+
+class Veiculo {
+    protected String marca;
+    protected String modelo;
+    protected int ano;
+
+    public Veiculo(String marca, String modelo, int ano) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+    }
+
+    public void exibirDados() {
+        System.out.println("Marca: " + marca);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Ano: " + ano);
+    }
+}
+
+class Carro extends Veiculo {
+    private int quantidadePortas;
+
+    public Carro(String marca, String modelo, int ano, int quantidadePortas) {
+        super(marca, modelo, ano);
+        this.quantidadePortas = quantidadePortas;
+    }
+
+    @Override
+    public void exibirDados() {
+        super.exibirDados();
+        System.out.println("Quantidade de portas: " + quantidadePortas);
+    }
+}
+
+class Moto extends Veiculo {
+    private int cilindradas;
+
+    public Moto(String marca, String modelo, int ano, int cilindradas) {
+        super(marca, modelo, ano);
+        this.cilindradas = cilindradas;
+    }
+
+    @Override
+    public void exibirDados() {
+        super.exibirDados();
+        System.out.println("Cilindradas: " + cilindradas);
+    }
+}
+
+public class SistemaVeiculos {
+    public static void main(String[] args) {
+        
+        Carro carro = new Carro("Chevrolet", "Onix", 2022, 4);
+
+               Moto moto = new Moto("Yamaha", "MT-03", 2023, 321);
+
+        
+        System.out.println("=== Dados do Carro ===");
+        carro.exibirDados();
+
+        System.out.println("\n=== Dados da Moto ===");
+        moto.exibirDados();
+    }
+}
+
+
+Exercicio 3 
+
+
+class Animal {
+    protected String nome;
+    protected int idade;
+
+    public Animal(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    public void emitirSom() {
+        System.out.println("Som genérico de animal");
+    }
+
+    public void exibirDados() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade + " anos");
+    }
+}
+
+
+class Cachorro extends Animal {
+    public Cachorro(String nome, int idade) {
+        super(nome, idade);
+    }
+
+    @Override
+    public void emitirSom() {
+        System.out.println("Latindo...");
+    }
+}
+
+
+class Gato extends Animal {
+    public Gato(String nome, int idade) {
+        super(nome, idade);
+    }
+
+    @Override
+    public void emitirSom() {
+        System.out.println("Miando...");
+    }
+}
+
+
+public class Zoologico {
+    public static void main(String[] args) {
+      
+        Cachorro cachorro = new Cachorro("Rex", 5);
+
+    
+        Gato gato = new Gato("Mimi", 3);
+
+      
+        System.out.println("=== Cachorro ===");
+        cachorro.exibirDados();
+        cachorro.emitirSom();
+
+      
+        System.out.println("\n=== Gato ===");
+        gato.exibirDados();
+        gato.emitirSom();
+    }
+}
+
+
