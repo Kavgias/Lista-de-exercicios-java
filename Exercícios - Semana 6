@@ -1,0 +1,163 @@
+Exercício 1: Soma dos N primeiros números naturais
+
+import java.util.Scanner;
+
+public class SomaNumerosNaturais {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+       //Solicita um numero ao usuario
+        System.out.print("Digite um número N: ");
+        int N = scanner.nextInt();
+        
+        int soma = 0; // Acumula para a soma
+        
+        // Loop para somar os primeiros N números naturais
+        for (int i = 1; i <= N; i++) {
+            soma += i;
+        }
+        
+        // Exibe o resultado da soma
+        System.out.println("A soma dos primeiros " + N + " números naturais é: " + soma);
+        
+        scanner.close();
+    }
+}
+
+Exercício 2: Tabuada de um número
+
+import java.util.Scanner;
+
+public class Tabuada {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita ao usuário um número inteiro
+        System.out.print("Digite um número para ver sua tabuada: ");
+        int numero = scanner.nextInt();
+        
+        int contador = 1; // Inicializa o contador
+        
+        // Loop para exibir a tabuada de 1 a 10
+        while (contador <= 10) {
+            System.out.println(numero + " x " + contador + " = " + (numero * contador));
+            contador++;
+        }
+        
+        scanner.close();
+    }
+}
+
+Exercício 3: Contagem regressiva usando do-while
+
+import java.util.Scanner;
+
+public class ContagemRegressiva {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita um número inteiro positivo ao usuário
+        int numero;
+        do {
+            System.out.print("Digite um número inteiro positivo para a contagem regressiva: ");
+            numero = scanner.nextInt();
+            if (numero < 0) {
+                System.out.println("Por favor, digite um número positivo.");
+            }
+        } while (numero < 0);
+        
+        // Loop do-while para contagem regressiva até 0
+        do {
+            System.out.println(numero);
+            numero--;
+        } while (numero >= 0);
+        
+        scanner.close();
+    }
+}
+
+Exercício 4: Média de notas de uma turma
+
+import java.util.Scanner;
+
+public class MediaTurma {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita a quantidade de alunos
+        int quantidadeAlunos;
+        do {
+            System.out.print("Digite a quantidade de alunos na turma: ");
+            quantidadeAlunos = scanner.nextInt();
+            if (quantidadeAlunos <= 0) {
+                System.out.println("A quantidade de alunos deve ser maior que zero.");
+            }
+        } while (quantidadeAlunos <= 0);
+        
+        double somaNotas = 0; // Acumulador para as notas
+        
+        // Loop for para receber as notas dos alunos
+        for (int i = 1; i <= quantidadeAlunos; i++) {
+            double nota;
+            do {
+                System.out.print("Digite a nota do aluno " + i + " (0 a 10): ");
+                nota = scanner.nextDouble();
+                if (nota < 0 || nota > 10) {
+                    System.out.println("Nota inválida! Digite um valor entre 0 e 10.");
+                }
+            } while (nota < 0 || nota > 10);
+            somaNotas += nota;
+        }
+        
+        // Calcula e exibe a média da turma
+        double media = somaNotas / quantidadeAlunos;
+        System.out.println("A média da turma é: " + media);
+        
+        scanner.close();
+    }
+}
+
+Exercício 5: Números primos em um intervalo
+
+import java.util.Scanner;
+
+public class NumerosPrimos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicita os números ao usuário
+        int inicio, fim;
+        do {
+            System.out.print("Digite o número inicial do intervalo (positivo): ");
+            inicio = scanner.nextInt();
+            System.out.print("Digite o número final do intervalo (positivo): ");
+            fim = scanner.nextInt();
+            
+            if (inicio <= 0 || fim <= 0 || inicio > fim) {
+                System.out.println("Por favor, insira valores positivos e certifique-se de que o início seja menor ou igual ao fim.");
+            }
+        } while (inicio <= 0 || fim <= 0 || inicio > fim);
+        
+        System.out.println("Números primos no intervalo de " + inicio + " a " + fim + ":");
+        
+        // Loop externo para percorrer os números dentro do intervalo
+        for (int num = inicio; num <= fim; num++) {
+            if (ehPrimo(num)) {
+                System.out.print(num + " ");
+            }
+        }
+        
+        scanner.close();
+    }
+    
+    // Método para verificar se um número é primo
+    public static boolean ehPrimo(int numero) {
+        if (numero < 2) return false;
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
