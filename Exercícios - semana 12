@@ -1,0 +1,203 @@
+Exercício 1: Interface para Pagamentos
+
+public interface Pagamento {
+    void realizarPagamento(double valor);
+}
+public class CartaoCredito implements Pagamento {
+    @Override
+    public void realizarPagamento(double valor) {
+        System.out.println("Pagamento de R$ " + valor + " realizado com Cartão de Crédito.");
+    }
+}
+public class BoletoBancario implements Pagamento {
+    @Override
+    public void realizarPagamento(double valor) {
+        System.out.println("Pagamento de R$ " + valor + " realizado com Boleto Bancário.");
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+                Pagamento pagamento1 = new CartaoCredito();
+        Pagamento pagamento2 = new BoletoBancario();
+        
+               pagamento1.realizarPagamento(100.50);
+        pagamento2.realizarPagamento(200.75);
+    }
+}
+
+Exercício 2: Interface para Formas Geométricas
+
+public interface FormaGeometrica {
+    double calcularArea();
+    double calcularPerimetro();
+}
+
+public class Retangulo implements FormaGeometrica {
+    private double largura;
+    private double altura;
+
+       public Retangulo(double largura, double altura) {
+        this.largura = largura;
+        this.altura = altura;
+    }
+
+    @Override
+    public double calcularArea() {
+        return largura * altura;
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return 2 * (largura + altura);
+    }
+}
+
+public class Circulo implements FormaGeometrica {
+    private double raio;
+
+    public Circulo(double raio) {
+        this.raio = raio;
+    }
+
+    @Override
+    public double calcularArea() {
+        return Math.PI * raio * raio;
+    }
+
+    @Override
+    public double calcularPerimetro() {
+        return 2 * Math.PI * raio;
+    }
+}
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite a largura do retângulo: ");
+        double largura = scanner.nextDouble();
+        System.out.print("Digite a altura do retângulo: ");
+        double altura = scanner.nextDouble();
+
+        Retangulo retangulo = new Retangulo(largura, altura);
+
+        System.out.print("Digite o raio do círculo: ");
+        double raio = scanner.nextDouble();
+
+        Circulo circulo = new Circulo(raio);
+
+        System.out.println("\n** Cálculos do Retângulo **");
+        System.out.println("Área: " + retangulo.calcularArea());
+        System.out.println("Perímetro: " + retangulo.calcularPerimetro());
+
+        System.out.println("\n** Cálculos do Círculo **");
+        System.out.println("Área: " + circulo.calcularArea());
+        System.out.println("Perímetro: " + circulo.calcularPerimetro());
+        
+        scanner.close();
+    }
+}
+
+
+Exercício 3: Interface para Dispositivos Eletrônicos
+
+public interface DispositivoEletronico {
+    void ligar();
+    void desligar();
+}
+
+public class Smartphone implements DispositivoEletronico {
+
+    @Override
+    public void ligar() {
+        System.out.println("Smartphone ligado.");
+    }
+
+    @Override
+    public void desligar() {
+        System.out.println("Smartphone desligado.");
+    }
+}
+
+public class Televisao implements DispositivoEletronico {
+
+    @Override
+    public void ligar() {
+        System.out.println("TV ligada.");
+    }
+
+    @Override
+    public void desligar() {
+        System.out.println("TV desligada.");
+    }
+}
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        DispositivoEletronico smartphone = new Smartphone();
+        DispositivoEletronico televisao = new Televisao();
+
+             while (true) {
+            System.out.println("\nEscolha o dispositivo:");
+            System.out.println("1 - Smartphone");
+            System.out.println("2 - Televisão");
+            System.out.println("0 - Sair");
+            System.out.print("Opção: ");
+            int opcao = scanner.nextInt();
+
+                 if (opcao == 1) {
+                System.out.println("Escolheu Smartphone.");
+                System.out.println("1 - Ligar Smartphone");
+                System.out.println("2 - Desligar Smartphone");
+                System.out.print("Opção: ");
+                int acao = scanner.nextInt();
+                if (acao == 1) {
+                    smartphone.ligar();
+                } else if (acao == 2) {
+                    smartphone.desligar();
+                } else {
+                    System.out.println("Opção inválida!");
+                }
+            } else if (opcao == 2) {
+                System.out.println("Escolheu Televisão.");
+                System.out.println("1 - Ligar Televisão");
+                System.out.println("2 - Desligar Televisão");
+                System.out.print("Opção: ");
+                int acao = scanner.nextInt();
+                if (acao == 1) {
+                    televisao.ligar();
+                } else if (acao == 2) {
+                    televisao.desligar();
+                } else {
+                    System.out.println("Opção inválida!");
+                }
+            } else if (opcao == 0) {
+                System.out.println("Saindo...");
+                break;
+            } else {
+                System.out.println("Opção inválida!");
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
