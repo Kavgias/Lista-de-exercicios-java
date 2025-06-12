@@ -1,0 +1,114 @@
+Exercício 1: Gravação e Leitura de Texto em Arquivo
+import java.io.*;
+import java.util.Scanner;
+
+public class Exercicio1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String nomeArquivo = "texto.txt";
+
+        // Parte 1: Gravar o texto no arquivo
+        System.out.println("Digite um texto para ser salvo no arquivo:");
+        String texto = scanner.nextLine();
+
+        try (FileWriter fw = new FileWriter(nomeArquivo);
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            
+            bw.write(texto);
+            System.out.println("Texto salvo com sucesso no arquivo " + nomeArquivo);
+
+        } catch (IOException e) {
+            System.out.println("Erro ao gravar no arquivo: " + e.getMessage());
+        }
+
+        // Parte 2: Ler o conteúdo do arquivo e exibir na tela
+        System.out.println("\nConteúdo lido do arquivo:");
+        try (FileReader fr = new FileReader(nomeArquivo);
+             BufferedReader br = new BufferedReader(fr)) {
+
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                System.out.println(linha);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+
+        scanner.close();
+    }
+}
+
+Exercício 2: Contagem de Palavras em um Arquivo
+
+import java.io.*;
+
+public class Exercicio2 {
+    public static void main(String[] args) {
+        String nomeArquivo = "dados.txt";
+        int contadorPalavras = 0;
+
+        try (FileReader fr = new FileReader(nomeArquivo);
+             BufferedReader br = new BufferedReader(fr)) {
+
+            String linha;
+
+            while ((linha = br.readLine()) != null) {
+                // Remove espaços extras e divide por espaços
+                String[] palavras = linha.trim().split("\\s+");
+                
+                // Verifica se a linha não está vazia
+                if (!linha.trim().isEmpty()) {
+                    contadorPalavras += palavras.length;
+                }
+            }
+
+            System.out.println("Número total de palavras no arquivo: " + contadorPalavras);
+
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+    }
+}
+
+Exercício 3: Interface Gráfica com JavaFX – Simulador de Mensagens
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+public class SimuladorDeMensagens extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Elementos da interface
+        TextField campoTexto = new TextField();
+        Button botaoExibir = new Button("Exibir Mensagem");
+        Label labelMensagem = new Label();
+
+        // Ação do botão
+        botaoExibir.setOnAction(e -> {
+            String texto = campoTexto.getText();
+            labelMensagem.setText("Mensagem: " + texto);
+        });
+
+        // Layout VBox
+        VBox layout = new VBox(10); // espaçamento entre os elementos
+        layout.setStyle("-fx-padding: 20; -fx-alignment: center;");
+        layout.getChildren().addAll(campoTexto, botaoExibir, labelMensagem);
+
+        // Cena e palco
+        Scene cena = new Scene(layout, 300, 200);
+        primaryStage.setTitle("Simulador de Mensagens");
+        primaryStage.setScene(cena);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
